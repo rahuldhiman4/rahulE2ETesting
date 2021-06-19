@@ -1,4 +1,4 @@
-package e2eLearning;
+package resources;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,7 +12,7 @@ public class TestBase {
     public WebDriver driver;
     public WebDriver initilizeDriver() throws IOException {
         Properties prop = new Properties();
-        FileInputStream propFile = new FileInputStream("/Users/rahul/Documents/E2E Framework/src/main/java/e2eLearning/data.properties");
+        FileInputStream propFile = new FileInputStream("/Users/rahul/Documents/E2E Framework/src/main/java/resources/data.properties");
         prop.load(propFile);
         String browserName = prop.getProperty("Browser");
         String osName = prop.getProperty("OperatingSystem");
