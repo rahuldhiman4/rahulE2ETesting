@@ -3,15 +3,15 @@ package pageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage {
+public class RSLoginPage {
     public WebDriver driver;
 
     By email = By.xpath("//input[@id='user_email']");
     By password  = By.xpath("//input[@id='user_password']");
-    By loginMsg = By.cssSelector(".main-hero h1");
+    By loginMsg = By.xpath("//*[@class='text-center']");
     By loginBtn = By.cssSelector(".login-button");
 
-    public LoginPage(WebDriver driver){
+    public RSLoginPage(WebDriver driver){
         this.driver = driver;
     }
 
@@ -28,6 +28,6 @@ public class LoginPage {
     }
 
     public boolean checkLoginPageLoaded(){
-        return driver.findElement(loginMsg).getText().contains("Log In to WebServices Testing");
+        return driver.findElement(loginMsg).getText().contains("Log in to Rahul");
     }
 }
