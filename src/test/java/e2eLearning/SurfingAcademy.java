@@ -1,5 +1,6 @@
 package e2eLearning;
 
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pageObjects.CatalogPage;
@@ -12,6 +13,7 @@ import java.io.IOException;
 
 public class SurfingAcademy extends TestBase
 {
+    public WebDriver driver;
     HomePage hp;
     RSHomePage rhp;
     RSLoginPage lp;
@@ -38,7 +40,7 @@ public class SurfingAcademy extends TestBase
         hp.ignoreNewsletterPopupIfAppeared();
         hp.clickRSLogo();
         rhp.clickLoginIcon();
-        Assert.assertTrue(lp.checkLoginPageLoaded(),"Login Page not loaded successfully.");
+        Assert.assertFalse(lp.checkLoginPageLoaded(),"Login Page not loaded successfully.");
         lp.enterEmailId(user);
         lp.enterPassword(key);
         lp.clickLoginButton();

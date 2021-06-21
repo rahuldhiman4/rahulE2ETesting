@@ -1,5 +1,6 @@
 package e2eLearning;
 
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pageObjects.*;
@@ -8,6 +9,7 @@ import resources.TestBase;
 import java.io.IOException;
 
 public class SurfingLearningPath extends TestBase {
+    public WebDriver driver;
     LearningPathPage lpp;
     HomePage hp;
     RSHomePage rhp;
