@@ -10,8 +10,9 @@ import java.util.concurrent.TimeUnit;
 
 public class TestBase {
     public WebDriver driver;
+    public Properties prop;
     public WebDriver initilizeDriver() throws IOException {
-        Properties prop = new Properties();
+        prop = new Properties();
         FileInputStream propFile = new FileInputStream("/Users/rahul/Documents/E2E Framework/src/main/java/resources/data.properties");
         prop.load(propFile);
         String browserName = prop.getProperty("Browser");

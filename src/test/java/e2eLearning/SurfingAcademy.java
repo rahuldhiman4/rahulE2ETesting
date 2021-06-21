@@ -1,10 +1,7 @@
 package e2eLearning;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pageObjects.CatalogPage;
 import pageObjects.HomePage;
 import pageObjects.RSHomePage;
@@ -19,7 +16,8 @@ public class SurfingAcademy extends TestBase
     RSHomePage rhp;
     RSLoginPage lp;
     CatalogPage cp;
-    @BeforeClass
+
+    @BeforeClass(alwaysRun = true)
     public void startupMethod() throws IOException {
         driver = initilizeDriver();
         hp = new HomePage(driver);
@@ -28,24 +26,25 @@ public class SurfingAcademy extends TestBase
         cp = new CatalogPage(driver);
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void launchURL(){
-        driver.get("http://www.qaclickacademy.com/");
+        driver.get(prop.getProperty("url"));
         driver.manage().window().maximize();
     }
 
     @Test(groups = {"Regression"})
-    public void LoginWithValidUser() {
+    @Parameters({"username","password"})
+    public void LoginWithValidUser(String user, String key) {
         hp.ignoreNewsletterPopupIfAppeared();
         hp.clickRSLogo();
         rhp.clickLoginIcon();
         Assert.assertTrue(lp.checkLoginPageLoaded(),"Login Page not loaded successfully.");
-        lp.enterEmailId("rahuldhiman4@gmail.com");
-        lp.enterPassword("Rahul@123");
+        lp.enterEmailId(user);
+        lp.enterPassword(key);
         lp.clickLoginButton();
     }
 
-    @Test(groups = {"Sanity"})
+    @Test(groups = {"Smoke"})
     public void searchingProduct(){
         hp.ignoreNewsletterPopupIfAppeared();
         hp.clickRSLogo();
@@ -54,7 +53,7 @@ public class SurfingAcademy extends TestBase
         System.out.println("Number of courses searched ========> "+cp.numberOfCoursesSearched());
     }
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void tearDownMethod(){
         driver.quit();
     }
