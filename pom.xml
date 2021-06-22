@@ -58,6 +58,8 @@
               <artifactId>maven-surefire-plugin</artifactId>
               <version>2.22.1</version>
               <configuration>
+                <runOrder>alphabetical</runOrder>
+                <useSystemClassLoader>false</useSystemClassLoader>
                 <suiteXmlFiles>
                   <suiteXmlFile>RegressionTestng.xml</suiteXmlFile>
                 </suiteXmlFiles>
@@ -75,6 +77,8 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>2.22.1</version>
             <configuration>
+              <runOrder>alphabetical</runOrder>
+              <useSystemClassLoader>false</useSystemClassLoader>
               <suiteXmlFiles>
                 <suiteXmlFile>SmokeTestng.xml</suiteXmlFile>
               </suiteXmlFiles>
